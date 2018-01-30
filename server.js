@@ -14,7 +14,7 @@ var request = require('request');
 var app = express();
 app.use(bodyParser.urlencoded({extended:true}))
 app.get('/', (req, res) => {
-    console.log('req.body',req.query)
+    console.log('req.body',req.query.code)
       // res.send({'8999':111})
     
     // 第一种 get 方式
@@ -28,7 +28,6 @@ app.get('/', (req, res) => {
       if (!error && response.statusCode == 200) {
         console.log('body',body) // Show the HTML for the baidu homepage.
       }
-      res.send({'8999':111})
     })
     
     // 第二种 post 方式
