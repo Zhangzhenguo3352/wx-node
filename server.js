@@ -12,8 +12,9 @@ var request = require('request');
 
 
 var app = express();
-app.get('/', (req, res) => {
-    console.log('lala')
+app.use(bodyParser.urlencoded({extended:true}))
+app.post('/', (req, res) => {
+    console.log('req.body',req.query)
       // res.send({'8999':111})
     
     // 第一种 get 方式
@@ -42,6 +43,7 @@ app.get('/', (req, res) => {
     }, function(error, response, body) {
         if (!error && response.statusCode == 200) {
             console.log('body',body)
+
         }
         res.send({'8999':111})
     }); 
