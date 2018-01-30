@@ -13,7 +13,7 @@ var request = require('request');
 
 var app = express();
 app.get('/', (req, res) => {
-
+    console.log('lala')
       // res.send({'8999':111})
     
     // 第一种 get 方式
