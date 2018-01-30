@@ -13,7 +13,7 @@ var request = require('request');
 
 var app = express();
 app.use(bodyParser.urlencoded({extended:true}))
-app.post('/', (req, res) => {
+app.get('/', (req, res) => {
     console.log('req.body',req.query)
       // res.send({'8999':111})
     
