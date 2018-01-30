@@ -48,8 +48,8 @@ app.get('/', (req, res) => {
 })
 
 
-app.listen(8999,() => {
-    console.log('服务启动成功 8999')
+app.listen(6000,() => {
+    console.log('服务启动成功 6000')
 })
 
 
