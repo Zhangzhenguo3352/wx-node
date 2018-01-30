@@ -10,6 +10,8 @@ var bodyParser = require('body-parser');
 var request = require('request');
 
 
+var app_id = 'wxdb0b83006fe07fa6';
+var app_secret = 'd28ba63b80b40f6a970ab6c15cc2e034'
 
 var app = express();
 app.use(bodyParser.urlencoded({extended:true}))
@@ -19,7 +21,7 @@ app.get('/', (req, res) => {
     
     // 第一种 get 方式
     // 这里去调用了  另外一个接口， 就可以认为是调用了 微信的接口  
-    request(`https://api.weixin.qq.com/sns/jscode2session?appid=wxdb0b83006fe07fa6&secret=d28ba63b80b40f6a970ab6c15cc2e034&js_code=${req.query.code}&grant_type=authorization_code`, function (error, response, body) {
+    request(`https://api.weixin.qq.com/sns/jscode2session?appid=${app_id}&secret=${app_secret}&js_code=${req.query.code}&grant_type=authorization_code`, function (error, response, body) {
       if (!error && response.statusCode == 200) {
         console.log('body',body) // Show the HTML for the baidu homepage.
       }
