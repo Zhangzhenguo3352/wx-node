@@ -10,7 +10,7 @@ var bodyParser = require('body-parser');
 var request = require('request');
 var md5 = require('md5');
 
-
+var token = '';
 var app_id = 'wxdb0b83006fe07fa6';
 var app_secret = 'd28ba63b80b40f6a970ab6c15cc2e034'
 
