@@ -53,7 +53,7 @@ app.get('/', (req, res) => {
             // 5分钟后token 失效
             setTimeout(function() { 
                 token = '';
-            },1000)
+            },300000)
         }
         res.send({token: token, body: body})
       } else {
