@@ -31,6 +31,7 @@ var str = 'aaaabbsssbsaewHHHSDKkflwklkclwl3434123d'
 var yan = 'JJKkkkfkk9c949vjJJJjvwi4izk  kk';
 
 function md5Fn(length) {
+
     return md5(md5(md5(`${strFn(length)}${str}${yan}`)))
 }
 
@@ -49,6 +50,10 @@ app.get('/', (req, res) => {
 
         if(!token) { // 没有token 去生成 token,  有token 用token
             token = md5Fn(32);
+            // 5分钟后token 失效
+            setTimeout(function() { 
+                token = '';
+            },1000)
         }
         res.send({token: token, body: body})
       } else {
