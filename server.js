@@ -46,7 +46,11 @@ app.get('/', (req, res) => {
     request(`https://api.weixin.qq.com/sns/jscode2session?appid=${app_id}&secret=${app_secret}&js_code=${req.query.code}&grant_type=authorization_code`, function (error, response, body) {
       if (!error && response.statusCode == 200) {
         console.log('body',body) // Show the HTML for the baidu homepage.
-        res.send({token: md5Fn(32), body: body})
+
+        if(!token) { // 没有token 去生成 token,  有token 用token
+            token = md5Fn(32);
+        }
+        res.send({token: token, body: body})
       } else {
         res.send({'error': error})
       }
