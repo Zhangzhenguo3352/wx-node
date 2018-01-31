@@ -30,12 +30,15 @@ var str = 'aaaabbsssbsaewHHHSDKkflwklkclwl3434123d'
 // 盐（自己写 一段自己都不认识的 字母）
 var yan = 'JJKkkkfkk9c949vjJJJjvwi4izk  kk';
 
+function md5Fn(length) {
+    return md5(md5(md5(`${strFn(length)}${str}${yan}`)))
+}
 
 var app = express();
 app.use(bodyParser.urlencoded({extended:true}))
 app.get('/', (req, res) => {
     console.log('req.body',req.query.code)
-    console.log('md5',md5(md5(md5(`${strFn(32)}${str}${yan}`))))
+    console.log('md5',)
       // res.send({'8999':111})
     
     // 第一种 get 方式
@@ -43,7 +46,7 @@ app.get('/', (req, res) => {
     request(`https://api.weixin.qq.com/sns/jscode2session?appid=${app_id}&secret=${app_secret}&js_code=${req.query.code}&grant_type=authorization_code`, function (error, response, body) {
       if (!error && response.statusCode == 200) {
         console.log('body',body) // Show the HTML for the baidu homepage.
-        res.send(body)
+        res.send([body, md5Fn(32)])
       } else {
         res.send({'error': error})
       }
